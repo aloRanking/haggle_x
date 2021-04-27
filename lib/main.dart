@@ -13,6 +13,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xff2E1963),
+        fontFamily: 'Grotesque',
 
         primarySwatch: Colors.blue,
       ),
