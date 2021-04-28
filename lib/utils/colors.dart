@@ -9,6 +9,7 @@ const kDashBColor = Color(0xFF264772);
 const kAccentRed = Color(0xFFFF4081);
 const kLightGreen = Color(0xff39DA8A);
 const kBlackColor = Colors.black;
+const kBgcolor = Color(0xff2E1963);
 
 const kGrey_10 = Color(0xFFe6e6e6);
 const kGrey_40 = Color(0xFF999999);
