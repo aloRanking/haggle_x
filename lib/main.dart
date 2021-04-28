@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         ),
 
         getPages: RouterPath.route,
-        initialRoute: '/loginView',
+        initialRoute: '/dashboardView',
       ),
     );
   }
