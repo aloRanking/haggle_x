@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:haggle_x/utils/colors.dart';
@@ -48,7 +49,11 @@ class VerifyController extends GetxController {
   }
 
   void verifyNewUser() async {
-    Get.dialog(Center(child: CircularProgressIndicator()),
+    Get.dialog(
+        Center(
+            child: SpinKitFadingCube(
+          color: kWhiteColor,
+        )),
         barrierDismissible: false);
 
     int code = int.parse(verifyCodeText.text);

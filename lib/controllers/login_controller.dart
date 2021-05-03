@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:haggle_x/controllers/authentication_controller.dart';
@@ -23,14 +24,18 @@ class LoginController extends GetxController {
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
 
-    emailTextController.text = 'alo2@gmail.com';
-    passwordTextController.text = 'alo12345';
+    /*emailTextController.text = 'alo2@gmail.com';
+    passwordTextController.text = 'alo12345';*/
 
     super.onInit();
   }
 
   void apiLogin() async {
-    Get.dialog(Center(child: CircularProgressIndicator()),
+    Get.dialog(
+        Center(
+            child: SpinKitFadingCube(
+          color: kWhiteColor,
+        )),
         barrierDismissible: false);
 
     bool isLoggedIn =
@@ -40,7 +45,7 @@ class LoginController extends GetxController {
       Get.back();
       //Get.snackbar('Code verified', '');
 
-      Get.toNamed('/haggleView');
+      Get.offNamed('/haggleView');
     } else {
       Get.back();
       Get.snackbar('Error', '$errorMssg',
