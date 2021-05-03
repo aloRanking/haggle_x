@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:haggle_x/utils/myTextSytle.dart';
 import 'package:haggle_x/utils/strings.dart';
 
@@ -29,23 +30,24 @@ class SetupScreen extends StatelessWidget {
               ),
               Gap(222),
               GestureDetector(
-                onTap: (){
-
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 50,
-                  margin: EdgeInsets.symmetric(horizontal: 36),
-                  decoration: BoxDecoration(
-                      color: Color(0xffFFC175),
-                      borderRadius: BorderRadius.all(Radius.circular(5))
-                  ),
-                  child: Center(
-                    child: Text(
-                      MyString.start_exploring_txt.toUpperCase(),
-                      style: TextStyle(
-                          color: Color(0xff3E0606),
-                          fontWeight: FontWeight.bold
+                onTap: () {},
+                child: GestureDetector(
+                  onTap: () {
+                    Get.offNamed('/dashboardView');
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 50,
+                    margin: EdgeInsets.symmetric(horizontal: 36),
+                    decoration: BoxDecoration(
+                        color: Color(0xffFFC175),
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                    child: Center(
+                      child: Text(
+                        MyString.start_exploring_txt.toUpperCase(),
+                        style: TextStyle(
+                            color: Color(0xff3E0606),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

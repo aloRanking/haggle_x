@@ -136,12 +136,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       width: 335,
                       margin:
                           EdgeInsets.only(right: 0, left: 5, top: 8, bottom: 7),
-                      child: Image.asset('assets/images/otc.png')),
+                      child: Image.asset('assets/images/otc-2.png')),
                   Container(
                       width: 335,
                       margin:
                           EdgeInsets.only(right: 0, left: 5, top: 8, bottom: 7),
-                      child: Image.asset('assets/images/otc-2.png')),
+                      child: Image.asset('assets/images/otc.png')),
                   Container(
                       width: 335,
                       margin:
