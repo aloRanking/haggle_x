@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:haggle_x/screen/country_screen.dart';
 import 'package:haggle_x/screen/dashboard_screen.dart';
 import 'package:haggle_x/screen/login_screen.dart';
 import 'package:haggle_x/screen/register_screen.dart';
@@ -34,6 +35,9 @@ class RouterPath {
       name: '/dashboardView',
       page: () => DashboardScreen(),
     ),
-
+    GetPage(
+      name: '/countryView',
+      page: () => CountrySelectionScreen(),
+    ),
   ];
 }

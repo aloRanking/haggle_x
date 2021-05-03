@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:haggle_x/controllers/authentication_controller.dart';
+import 'package:haggle_x/utils/graphql_config.dart';
 import 'package:haggle_x/utils/routePath.dart';
 
-void main() {
+GraphQLConfiguration graphQLConfiguration = GraphQLConfiguration();
+
+void main() async {
+  await initHiveForFlutter();
+  Get.put(AuthenticationController());
+
   runApp(MyApp());
 }
 
@@ -16,17 +24,17 @@ class MyApp extends StatelessWidget {
         if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null)
           FocusManager.instance.primaryFocus.unfocus();
       },
-      child: GetMaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          scaffoldBackgroundColor: Color(0xff2E1963),
-          fontFamily: 'Grotesque',
-
-          primarySwatch: Colors.blue,
+      child: GraphQLProvider(
+        client: graphQLConfiguration.client,
+        child: GetMaterialApp(
+          theme: ThemeData(
+            scaffoldBackgroundColor: Color(0xff2E1963),
+            fontFamily: 'Grotesque',
+            primarySwatch: Colors.blue,
+          ),
+          getPages: RouterPath.route,
+          initialRoute: '/dashboardView',
         ),
-
-        getPages: RouterPath.route,
-        initialRoute: '/dashboardView',
       ),
     );
   }

@@ -1,0 +1,5 @@
+package_name: haggle_x
+graphql_endpoint: https://hagglex-backend-staging.herokuapp.com/graphql
+models_directory_path: lib/graphql/models/
+type_override:
+  id: int
