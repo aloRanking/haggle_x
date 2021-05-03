@@ -33,7 +33,7 @@ class SetupScreen extends StatelessWidget {
                 onTap: () {},
                 child: GestureDetector(
                   onTap: () {
-                    Get.offNamed('/dashboardView');
+                    Get.offNamed('/haggleView');
                   },
                   child: Container(
                     width: double.infinity,
