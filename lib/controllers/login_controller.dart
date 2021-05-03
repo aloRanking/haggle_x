@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:haggle_x/controllers/authentication_controller.dart';
@@ -30,7 +31,11 @@ class LoginController extends GetxController {
   }
 
   void apiLogin() async {
-    Get.dialog(Center(child: CircularProgressIndicator()),
+    Get.dialog(
+        Center(
+            child: SpinKitFadingCube(
+          color: kWhiteColor,
+        )),
         barrierDismissible: false);
 
     bool isLoggedIn =

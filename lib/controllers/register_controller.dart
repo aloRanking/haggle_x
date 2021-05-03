@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:haggle_x/model/country_model.dart';
@@ -40,7 +41,11 @@ class RegisterController extends GetxController {
   }
 
   void apiRegister(User user) async {
-    Get.dialog(Center(child: CircularProgressIndicator()),
+    Get.dialog(
+        Center(
+            child: SpinKitFadingCube(
+          color: kWhiteColor,
+        )),
         barrierDismissible: false);
 
     bool isRegistered = await _createAccountPressed(user);

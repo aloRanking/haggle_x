@@ -17,12 +17,11 @@ class RouterPath {
     GetPage(
       name: '/loginView',
       page: () => LoginScreen(),
-
-    ),
+      transition: Transition.downToUp),
     GetPage(
       name: '/registerView',
       page: () => RegisterScreen(),
-    ),
+        transition: Transition.rightToLeftWithFade),
     GetPage(
       name: '/verifyView',
       page: () => VerifyScreen(),
@@ -34,6 +33,8 @@ class RouterPath {
     GetPage(
       name: '/haggleView',
       page: () => HaggleScreen(),
+      transition: Transition.zoom,
+      transitionDuration: Duration(seconds: 1),
     ),
     GetPage(
       name: '/countryView',

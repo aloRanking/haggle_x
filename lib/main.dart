@@ -27,13 +27,14 @@ class MyApp extends StatelessWidget {
       child: GraphQLProvider(
         client: graphQLConfiguration.client,
         child: GetMaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             scaffoldBackgroundColor: Color(0xff2E1963),
             fontFamily: 'Grotesque',
             primarySwatch: Colors.blue,
           ),
           getPages: RouterPath.route,
-          initialRoute: '/haggleView',
+          initialRoute: '/splashView',
         ),
       ),
     );
