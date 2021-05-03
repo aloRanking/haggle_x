@@ -40,7 +40,7 @@ class LoginController extends GetxController {
       Get.back();
       //Get.snackbar('Code verified', '');
 
-      Get.toNamed('/dashboardView');
+      Get.toNamed('/haggleView');
     } else {
       Get.back();
       Get.snackbar('Error', '$errorMssg',

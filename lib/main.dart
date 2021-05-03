@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           getPages: RouterPath.route,
-          initialRoute: '/dashboardView',
+          initialRoute: '/haggleView',
         ),
       ),
     );

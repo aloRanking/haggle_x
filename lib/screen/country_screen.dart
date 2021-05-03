@@ -60,6 +60,9 @@ class _CountrySelectionScreenState extends State<CountrySelectionScreen> {
                         padding: const EdgeInsets.only(
                             left: 21.0, top: 16, bottom: 10),
                         child: TextField(
+                            style: kRegularTextStyle.copyWith(
+                              fontSize: 10,
+                            ),
                             decoration: InputDecoration(
                                 hintText: 'Search for Country',
                                 hintStyle: kRegularTextStyle.copyWith(

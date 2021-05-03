@@ -73,44 +73,60 @@ class LoginScreen extends StatelessWidget {
                             return null;
                           },
                         ),
-                        TextFormField(
-                          style: TextStyle(color: kWhiteColor),
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          controller: _loginController.passwordTextController,
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            labelStyle: TextStyle(color: kWhiteColor),
-                            //ixIcon:
-                            border: UnderlineInputBorder(
-                                borderSide: BorderSide(color: kWhiteColor)),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color:kWhiteColor,
+                        Obx(() {
+                          return TextFormField(
+                            style: TextStyle(color: kWhiteColor),
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText:
+                                _loginController.isPasswordVisible.value
+                                    ? false
+                                    : true,
+                            controller: _loginController.passwordTextController,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              labelStyle: TextStyle(color: kWhiteColor),
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  print('tap');
+                                  _loginController.isPasswordVisible.value =
+                                      !_loginController.isPasswordVisible.value;
+                                },
+                                child: Icon(
+                                  _loginController.isPasswordVisible.value
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: kWhiteColor,
+                                ),
+                              ),
+                              border: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: kWhiteColor)),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: kWhiteColor,
+                                ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xffBA3AF9),
+                                ),
+                              ),
+                              errorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.red,
+                                  width: 1.0,
+                                ),
                               ),
                             ),
-                            focusedBorder: UnderlineInputBorder(
+                            validator: (value) {
+                              if (value.isEmpty ||
+                                  value.toString().length < 8) {
+                                return 'Password must be longer than 8 characters';
+                              }
 
-                              borderSide: BorderSide(
-                                color:Color(0xffBA3AF9),
-                              ),
-                            ),
-
-                            errorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                                width: 1.0,
-                              ),
-                            ),
-                          ),
-                          validator: (value) {
-                            if (value.isEmpty || value.toString().length < 8) {
-                              return 'Password must be longer than 8 characters';
-                            }
-
-                            return null;
-                          },
-                        )
+                              return null;
+                            },
+                          );
+                        }),
                       ],
                     ),
                   ),

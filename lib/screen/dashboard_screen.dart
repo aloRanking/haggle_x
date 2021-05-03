@@ -4,39 +4,21 @@ import 'package:gap/gap.dart';
 import 'package:haggle_x/utils/colors.dart';
 import 'package:haggle_x/utils/myTextSytle.dart';
 
+enum Currency { Naira, USD }
+
 class DashboardScreen extends StatefulWidget {
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  int currentIndex = 0;
+  Currency selectedCurrency = Currency.Naira;
+
+  //Currency selectedCurrency
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: kWhiteColor,
-          selectedItemColor: kBgcolor,
-          unselectedItemColor: Colors.grey[400],
-          currentIndex: currentIndex,
-          onTap: (int index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-                icon: Image.asset('assets/images/dasbboard.png'), label: ""),
-            BottomNavigationBarItem(
-                icon: Image.asset('assets/images/wallet.png'), label: ""),
-            BottomNavigationBarItem(
-                icon: Image.asset('assets/images/otc-1.png'), label: ""),
-            BottomNavigationBarItem(
-                icon: Image.asset('assets/images/Savings.png'), label: ""),
-            BottomNavigationBarItem(
-                icon: Image.asset('assets/images/Utilities.png'), label: ""),
-          ]),
       body: SafeArea(
         child: Column(
           children: [
@@ -93,11 +75,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             height: 23.85,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Color(0xffD7C8FF38).withAlpha(50)),
+                                color: Color(0xff463279)),
                           ),
                           Icon(
                             Icons.notifications,
                             color: kWhiteColor,
+                            size: 22,
                           )
                         ],
                       )
@@ -112,13 +95,116 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 32, bottom: 17),
+                  margin: EdgeInsets.only(left: 32, bottom: 17, right: 31),
                   child: Row(
                     children: [
-                      Text(
-                        '\$***',
-                        style: kRegularTextStyle.copyWith(
-                            fontWeight: FontWeight.w500, fontSize: 25),
+                      Expanded(
+                        flex: 2,
+                        child: Row(
+                          children: [
+                            Text(
+                              selectedCurrency == Currency.Naira
+                                  ? "\u20A6 0.00"
+                                  : '\$*** ',
+                              style: selectedCurrency == Currency.Naira
+                                  ? kBoldTextStyle.copyWith(fontSize: 25)
+                                  : kRegularTextStyle.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 25),
+                            ),
+                            Gap(5),
+                            Text(
+                              selectedCurrency == Currency.Naira ? "NGN" : '',
+                              style: kRegularTextStyle.copyWith(fontSize: 9),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Gap(35),
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(2.41, 1.6, 3.5, 2.34),
+                          width: 89,
+                          height: 31,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(16)),
+                              color: kWhiteColor),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedCurrency = Currency.USD;
+                                  });
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: selectedCurrency == Currency.USD
+                                      ? 42.51
+                                      : 38,
+                                  height: 27.06,
+                                  decoration: selectedCurrency == Currency.USD
+                                      ? BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(16)),
+                                          color: kOrangeColor,
+                                          border: Border.all(
+                                              color: kWhiteColor, width: 1),
+                                          boxShadow: [
+                                              BoxShadow(
+                                                color: Color(0xff00000029),
+                                                blurRadius: 6,
+                                                offset: Offset(0, 3),
+                                              )
+                                            ])
+                                      : null,
+                                  child: Text('USD',
+                                      style: selectedCurrency == Currency.USD
+                                          ? kBoldTextStyle.copyWith(
+                                              fontSize: 6, color: kBlackColor)
+                                          : kRegularTextStyle.copyWith(
+                                              fontSize: 6, color: kBlackColor)),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedCurrency = Currency.Naira;
+                                  });
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: selectedCurrency == Currency.Naira
+                                      ? 42.51
+                                      : 38,
+                                  height: 27.06,
+                                  decoration: selectedCurrency == Currency.Naira
+                                      ? BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(16)),
+                                          color: kOrangeColor,
+                                          border: Border.all(
+                                              color: kWhiteColor, width: 1),
+                                          boxShadow: [
+                                              BoxShadow(
+                                                color: Color(0xff00000029),
+                                                blurRadius: 6,
+                                                offset: Offset(0, 3),
+                                              )
+                                            ])
+                                      : null,
+                                  child: Text('NGN',
+                                      style: selectedCurrency == Currency.Naira
+                                          ? kBoldTextStyle.copyWith(
+                                              fontSize: 6, color: kBlackColor)
+                                          : kRegularTextStyle.copyWith(
+                                              fontSize: 6, color: kBlackColor)),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       )
                     ],
                   ),
@@ -151,71 +237,132 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ],
               ),
             ),
-            Container(
-              width: double.infinity,
-              color: kWhiteColor,
-              height: 200,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Gap(22),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 23.0, top: 22, bottom: 21),
-                    child: Text(
-                      'Market',
-                      style: kBoldTextStyle.copyWith(
-                          color: kBlackColor, fontSize: 15),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12, right: 17),
-                    child: Container(
-                      padding: EdgeInsets.only(left: 7, right: 4),
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset('assets/images/biTCOIN.png')),
-                          Gap(17.2),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Haggle (HAG)',
-                                style: kRegularTextStyle.copyWith(
-                                    color: kBlackColor, fontSize: 13),
-                              ),
-                              Gap(8),
-                              Row(
-                                children: [
-                                  Text(
-                                    'NGN 380',
-                                    style: kRegularTextStyle.copyWith(
-                                        color: kBlackColor.withOpacity(0.5),
-                                        fontSize: 9),
-                                  ),
-                                  Gap(5),
-                                  Text(
-                                    '+2.34%',
-                                    style: kRegularTextStyle.copyWith(
-                                        color: Color(0xff52CB35), fontSize: 9),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Gap(100),
-                          Container(
-                              child:
-                                  Image.asset('assets/images/Group 875-1.png')),
-                        ],
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                color: kWhiteColor,
+                //height: 200,
+                child: ListView(
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Gap(22),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 23.0, top: 22, bottom: 21),
+                      child: Text(
+                        'Market',
+                        style: kBoldTextStyle.copyWith(
+                            color: kBlackColor, fontSize: 15),
                       ),
                     ),
-                  )
-                ],
+
+                    MarketIem(
+                      coinImg: 'haggle.png',
+                      coinName: 'Haggle (HAG)',
+                      price: 'NGN 380',
+                      imgChart: 'Group 875-1.png',
+                    ),
+
+                    Divider(
+                      indent: 12,
+                      endIndent: 17,
+                    ),
+
+                    MarketIem(
+                      coinImg: 'bitcoin.png',
+                      coinName: 'Bitcoin (BTC)',
+                      price: 'NGN 4,272,147.00',
+                      rate: '+2.34%',
+                      imgChart: 'Group 876-1.png',
+                    ),
+                    Divider(
+                      indent: 12,
+                      endIndent: 17,
+                    ),
+
+                    MarketIem(
+                      coinImg: 'usdt.png',
+                      coinName: 'Tether (USDT)',
+                      price: 'NGN 4,272,147.00',
+                      rate: '+2.34%',
+                      imgChart: 'Group 876.png',
+                    ),
+
+                    Divider(
+                      indent: 12,
+                      endIndent: 17,
+                    ),
+                  ],
+                ),
               ),
             )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MarketIem extends StatelessWidget {
+  MarketIem(
+      {this.coinImg, this.coinName, this.price, this.rate, this.imgChart});
+
+  final String coinImg;
+  final String coinName;
+  final String price;
+  final String rate;
+  final String imgChart;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 12, right: 17, bottom: 20, top: 15),
+      child: Container(
+        padding: EdgeInsets.only(left: 7, right: 4),
+        child: Row(
+          children: [
+            Container(
+                child: Image.asset(
+              'assets/images/$coinImg',
+              width: 40,
+              height: 40,
+            )),
+            Gap(17.2),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  coinName,
+                  style: kRegularTextStyle.copyWith(
+                      color: kBlackColor, fontSize: 13),
+                ),
+                Gap(8),
+                Row(
+                  children: [
+                    Text(
+                      price,
+                      style: kRegularTextStyle.copyWith(
+                          color: kBlackColor.withOpacity(0.5), fontSize: 9),
+                    ),
+                    Gap(5),
+                    Text(
+                      rate ?? '',
+                      style: kRegularTextStyle.copyWith(
+                          color: Color(0xff52CB35), fontSize: 9),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Gap(80),
+            Expanded(
+              child: Container(
+                  child: Image.asset(
+                'assets/images/$imgChart',
+                width: 79.53,
+                height: 23.28,
+              )),
+            ),
           ],
         ),
       ),
