@@ -66,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
                                   keyBoardType: TextInputType.emailAddress,
                                   onValidate: (value) {
                                     if (value.isEmpty) {
-                                      return 'Email field can\'t be blank';
+                                      return 'Email address is required';
                                     }
                                     return null;
                                   },
@@ -94,7 +94,7 @@ class RegisterScreen extends StatelessWidget {
                                   keyBoardType: TextInputType.name,
                                   onValidate: (value) {
                                     if (value.isEmpty) {
-                                      return 'Username field can\'t be blank';
+                                      return 'Username is required';
                                     }
                                     return null;
                                   },
@@ -166,7 +166,7 @@ class RegisterScreen extends StatelessWidget {
                                         keyBoardType: TextInputType.number,
                                         onValidate: (value) {
                                           if (value.isEmpty) {
-                                            return 'Phonenumber field can\'t be blank';
+                                            return 'Phonenumber is required';
                                           }
                                           return null;
                                         },
@@ -179,13 +179,6 @@ class RegisterScreen extends StatelessWidget {
                                 CustomTextField(
                                   labelText: 'Referral code (optional)',
                                   labelColor: kBlackColor.withOpacity(0.4),
-                                  onValidate: (value) {
-                                    if (value.isEmpty) {
-                                      value = '';
-                                      return null;
-                                    }
-                                    return null;
-                                  },
                                   onSave: (String value) =>
                                       newUser.referralCode = value,
                                 ),
@@ -201,12 +194,9 @@ class RegisterScreen extends StatelessWidget {
                         Gap(30),
                         GestureDetector(
                           onTap: () {
-                            print("${newUser.referralCode}");
-
-                            /* if (newUser.referralCode == null) {
+                            if (newUser.referralCode == null) {
                               newUser.referralCode = '';
-
-                            }*/
+                            }
 
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();

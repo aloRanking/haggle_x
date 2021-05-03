@@ -101,6 +101,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       Expanded(
                         flex: 2,
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               selectedCurrency == Currency.Naira
