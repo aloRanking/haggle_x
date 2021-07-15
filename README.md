@@ -12,15 +12,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 The things you'll need in order to use the app and how to install them
 
-```
-Give examples
-```
+An IDE (Android Studio or VSCode)
+Flutter SDK
 
 ### How to use
 
 A step by step guide on how to use the app's features
 
-End with a few screenshots
+<img src ="screenshots/ss1.png" width = "200" height = "350">  <img src ="screenshots/ss2.png" width = "200" height = "350">  <img src ="screenshots/ss3.png" width = "200" height = "350">
+
+<img src ="screenshots/ss4.png" width = "200" height = "350">  <img src ="screenshots/ss5.png" width = "200" height = "350">  <img src ="screenshots/ss6.png" width = "200" height = "350">
 
 ## Built with
 
